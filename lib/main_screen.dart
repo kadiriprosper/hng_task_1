@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hng_task_1/web_page_screen.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -80,15 +80,12 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   const SizedBox(height: 20),
                   MaterialButton(
-                    onPressed: () async {
-                      String status = 'Loading Url..';
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(status),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const WebPageScreen(),
                         ),
                       );
-                      final uri = Uri.parse('https://github.com/kadiriprosper');
-                      await launchUrl(uri, mode: LaunchMode.inAppWebView);
                     },
                     color: Colors.black,
                     height: 60,
